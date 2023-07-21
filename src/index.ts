@@ -10,6 +10,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import session from 'express-session';
 import csurf from 'csurf';
+import cors from 'cors';
 
 import {
     h5pAjaxExpressRouter,
@@ -185,6 +186,7 @@ const start = async (): Promise<void> => {
 
     // We now set up the Express server in the usual fashion.
     const server = express();
+    server.use(cors());
 
     server.use(bodyParser.json({ limit: '500mb' }));
     server.use(
